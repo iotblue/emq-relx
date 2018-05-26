@@ -45,7 +45,7 @@ dep_emq_lua_hook  = git https://github.com/emqtt/emq-lua-hook master
 #dep_emq_elixir_plugin = git  https://github.com/emqtt/emq-elixir-plugin master
 
 # Iotblue kafka plugin
-dep_emq_kafka_bridge  = git https://github.com/iotblue/emq_kafka_bridge develop
+dep_emq_kafka_bridge  = git https://github.com/iotblue/emq_kafka_bridge master
 # COVER = true
 
 #NO_AUTOPATCH = emq_elixir_plugin
