@@ -51,8 +51,6 @@ dep_emq_coap  = git https://github.com/iotblue/emqx-coap v2.3.11
 
 #dep_emq_elixir_plugin = git  https://github.com/emqtt/emq-elixir-plugin master
 
-# Iotblue kafka plugin
-dep_emq_kafka_bridge  = git https://github.com/iotblue/emq_kafka_bridge master
 # COVER = true
 
 #NO_AUTOPATCH = emq_elixir_plugin
