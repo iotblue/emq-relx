@@ -33,7 +33,6 @@ dep_emq_auth_jwt      = git https://github.com/emqtt/emq-auth-jwt v2.3.11
 
 # mqtt-sn, coap and stomp
 dep_emq_sn    = git https://github.com/emqtt/emq-sn v2.3.11
-dep_emq_coap  = git https://github.com/emqtt/emq-coap v2.3.11
 dep_emq_stomp = git https://github.com/emqtt/emq-stomp v2.3.11
 
 # plugin template
@@ -45,6 +44,8 @@ dep_emq_lua_hook  = git https://github.com/emqtt/emq-lua-hook v2.3.11
 
 # kafka
 dep_emq_kafka_bridge  = git https://github.com/iotblue/emq_kafka_bridge v2.3.11
+# coap
+dep_emq_coap  = git https://github.com/iotblue/emqx-coap v2.3.11
 
 # COVER = true
 
