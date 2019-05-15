@@ -17,10 +17,12 @@ DEPLOY ?= cloud
 MAIN_APPS = emqx emqx-retainer emqx-recon emqx-management \
             emqx-auth-clientid emqx-auth-username emqx-auth-http \
             emqx-auth-mysql emqx-reloader \
-            emqx-sn emqx-coap emqx-stomp emqx-web-hook \
+            emqx-sn emqx-stomp emqx-web-hook \
             emqx-auth-jwt emqx-delayed-publish
 
 CLOUD_APPS = emqx-lwm2m emqx-dashboard emqx-auth-ldap emqx-auth-pgsql emqx-auth-redis emqx-auth-mongo emqx-plugin-template emqx-statsd emqx-lua-hook
+
+PRIVATE_APPS = emqx-kafka-bridge emqx-coap
 
 ifeq (cloud,$(DEPLOY))
   MAIN_APPS += $(CLOUD_APPS)
@@ -41,11 +43,14 @@ app_name = $(subst $(dash),$(uscore),$(1))
 app_vsn = $(if $($(call app_name,$(1))_vsn),$($(call app_name,$(1))_vsn),$(EMQX_DEPS_DEFAULT_VSN))
 
 DEPS += $(foreach dep,$(MAIN_APPS),$(call app_name,$(dep)))
+DEPS += $(foreach dep,$(PRIVATE_APPS),$(call app_name,$(dep)))
+
 
 # Inject variables like
 # dep_app_name = git-emqx https://github.com/emqx/app-name branch-or-tag
 # for erlang.mk
 $(foreach dep,$(MAIN_APPS),$(eval dep_$(call app_name,$(dep)) = git-emqx https://github.com/emqx/$(dep) $(call app_vsn,$(dep))))
+$(foreach dep,$(PRIVATE_APPS),$(eval dep_$(call app_name,$(dep)) = git-emqx https://github.com/iotblue/$(dep) $(call app_vsn,$(dep))))
 
 # Add this dependency before including erlang.mk
 all:: OTP_21_OR_NEWER
